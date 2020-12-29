@@ -3,7 +3,51 @@
 ### 此项目仅供本人学习
 For further reference, please consider the following sections:
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.4.1/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.4.1/maven-plugin/reference/html/#build-image)
+* [Flume 1.8用户手册中文版](https://flume.liyifeng.org/)
+* [GitHub 代码地址](https://github.com/xiaoxigua13437/MysqlSink)
+
+
+   **此项目仅供本人学习**
+
+   ####1.安装依赖
+        本地安装jdk,maven等 基础工具
+
+
+   ####2.文件说明
+        /src/main/java/com/yushu目录下以知识点分包,以main()和*test()为程序入口,Test为测试类;
+
+        pom.xml文件中注释了maven的基本配置方法.
+
+
+   ####3.目录说明
+        以下为/src/main/java/com/yushu目录下的目录结构
+
+   _目录结构_
+
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |   
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+
+
+
+
+
+
+
 
