@@ -1,10 +1,12 @@
 package com.yushu.flume.util;
 
+import org.jboss.netty.handler.codec.base64.Base64Decoder;
+import org.jboss.netty.handler.codec.base64.Base64Encoder;
+
+import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author yushu.zhao
@@ -19,7 +21,7 @@ public class FormatDataUtil {
     private static String arg4 = "&&";
     private static String arg6 = "##";
     private static String arg7 = "DataTime";
-
+    private static String arg8 = "<>";
 
 
     /**
@@ -36,7 +38,7 @@ public class FormatDataUtil {
         Map<String, String> map = new HashMap<String, String>();
         data = data.replaceAll(arg6, "");
         if(isContainsChars(data,arg1)){
-            String[] temp = getArrayByChar(data, arg1);
+            String[] temp = getArrayByChar(data, arg8);
             for (String s : temp) {
                 // 如果有多个参数用逗号分割
                 if (isContainsChars(s, arg2)) {
@@ -114,6 +116,7 @@ public class FormatDataUtil {
         }
         return str.contains(arg);
     }
+
     /**
      * 判断字符串是否为空
      *
@@ -143,7 +146,72 @@ public class FormatDataUtil {
         return datestr;
     }
 
+    /**
+     * 新增Base64处理字符串
+     *
+     * @throws UnsupportedEncodingException
+     */
+    public static void test() throws UnsupportedEncodingException {
 
+
+        String base64encodedString = Base64.getEncoder().encodeToString("runoob?java8".getBytes("utf-8"));
+        System.out.println("Base64 编码字符串 (基本) :" + base64encodedString);
+        // 解码
+        byte[] base64decodedBytes = Base64.getDecoder().decode(base64encodedString);
+        System.out.println("原始字符串: " + new String(base64decodedBytes, "utf-8"));
+
+
+        base64encodedString = Base64.getUrlEncoder().encodeToString("runoob?java8".getBytes("utf-8"));
+        System.out.println("Base64 编码字符串 (URL) :" + base64encodedString);
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < 10; ++i) {
+            stringBuilder.append(UUID.randomUUID().toString());
+        }
+
+        byte[] mimeBytes = stringBuilder.toString().getBytes("utf-8");
+        String mimeEncodedString = Base64.getMimeEncoder().encodeToString(mimeBytes);
+        System.out.println("Base64 编码字符串 (MIME) :" + mimeEncodedString);
+    }
+
+
+    public static void main(String[] args) throws UnsupportedEncodingException {
+
+
+
+
+        FormatDataUtil.getMapByData("event_id=xxx<>file_path=base64(c:\\xxx;dsdf.txt)<>file_name=xxx<>key_word=base64(xxx;xxx;xxx)<>content_text=base64(xxxxxyyy)<>create_time=1609727577000");
+
+
+
+        String str = "c:\\xxx;dsdf.txt";
+        String base64encodedString = Base64.getEncoder().encodeToString(str.getBytes("utf-8"));
+
+        String str1 = "event_id=xxx<>file_path="+base64encodedString+"<>";
+
+        String str2 = "event_id=xxx<>file_path=base64(c:\\xxx;dsdf.txt)<>file_name=xxx<>key_word=base64(xxx;xxx;xxx)<>content_text=base64(xxxxxyyy)<>create_time=1609727577000";
+
+        String[] temp = getArrayByChar(str2, arg8);
+        System.out.println(temp.length);
+        for (String s : temp) {
+            // 如果有多个参数用逗号分割
+            if (isContainsChars(s, arg2)) {
+                String[] temp1 = getArrayByChar(s, arg2);
+                for (String s1 : temp1) {
+                    System.out.println(s1);
+                }
+            } else {
+                System.out.println(s);
+            }
+        }
+
+
+
+//        FormatDataUtil.test();
+
+
+    }
 
 
 
