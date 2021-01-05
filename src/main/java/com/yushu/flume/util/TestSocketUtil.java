@@ -15,7 +15,7 @@ public class TestSocketUtil {
 
         MyRpcClientFacade client = new MyRpcClientFacade();
         //使用远程Flume代理的主机和端口初始化客户端
-        client.init("192.170.15.29", 44444);
+        client.init("192.170.15.85", 7089);
 
         //发生event
         String sampleData = "ST=91;CN=9011;PW=123456;MN=88888880000001;Flag=0;CP=&&QN=20040516010101001;QnRtn=1&&";
