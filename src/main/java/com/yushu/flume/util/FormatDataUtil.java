@@ -1,8 +1,5 @@
 package com.yushu.flume.util;
 
-import org.jboss.netty.handler.codec.base64.Base64Decoder;
-import org.jboss.netty.handler.codec.base64.Base64Encoder;
-
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -38,7 +35,7 @@ public class FormatDataUtil {
         Map<String, String> map = new HashMap<String, String>();
         data = data.replaceAll(arg6, "");
         if(isContainsChars(data,arg1)){
-            String[] temp = getArrayByChar(data, arg8);
+            String[] temp = getArrayByChar(data, arg1);
             for (String s : temp) {
                 // 如果有多个参数用逗号分割
                 if (isContainsChars(s, arg2)) {
@@ -127,6 +124,8 @@ public class FormatDataUtil {
         return str == null || arg.equals(str);
     }
 
+
+
     /**
      * 格式化时间字符串
      * @param datestr
@@ -176,13 +175,19 @@ public class FormatDataUtil {
     }
 
 
-    public static void main(String[] args) throws UnsupportedEncodingException {
+    /*public static void main(String[] args) throws UnsupportedEncodingException {
 
 
 
+        Map <String,String> map = null;
 
-        FormatDataUtil.getMapByData("event_id=xxx<>file_path=base64(c:\\xxx;dsdf.txt)<>file_name=xxx<>key_word=base64(xxx;xxx;xxx)<>content_text=base64(xxxxxyyy)<>create_time=1609727577000");
+        map = FormatDataUtil.getMapByData("event_id=xxx<>file_path=base64(c:\\xxx;dsdf.txt)<>file_name=xxx<>key_word=base64(xxx;xxx;xxx)<>content_text=base64(xxxxxyyy)<>create_time=1609727577000");
 
+        for (Map.Entry<String,String> entry : map.entrySet()){
+
+            System.out.println(entry.getKey()+":"+entry.getValue()+"\n");
+
+        }
 
 
         String str = "c:\\xxx;dsdf.txt";
@@ -211,7 +216,7 @@ public class FormatDataUtil {
 //        FormatDataUtil.test();
 
 
-    }
+    }*/
 
 
 

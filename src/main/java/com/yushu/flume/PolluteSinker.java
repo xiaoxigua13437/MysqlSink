@@ -124,7 +124,6 @@ public class PolluteSinker extends AbstractSink implements Configurable {
         String url = "jdbc:mysql://"+hostname+":3306/"+databaseName+"?allowMultiQueries=true&useUnicode=true&" +
                 "characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull";
         //调用DriverManager对象的getConnection()方法，获得一个Connection对象
-
         try {
             LOG.info("user:{},password:{}",user,password);
             conn = DriverManager.getConnection(url, user, password);
