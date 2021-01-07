@@ -1,5 +1,7 @@
 package com.yushu.flume.util;
 
+import com.yushu.flume.entity.ReceiveData;
+
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -34,8 +36,8 @@ public class FormatDataUtil {
         }
         Map<String, String> map = new HashMap<String, String>();
         data = data.replaceAll(arg6, "");
-        if(isContainsChars(data,arg1)){
-            String[] temp = getArrayByChar(data, arg1);
+        if(isContainsChars(data,arg8)){
+            String[] temp = getArrayByChar(data, arg8);
             for (String s : temp) {
                 // 如果有多个参数用逗号分割
                 if (isContainsChars(s, arg2)) {
@@ -175,49 +177,35 @@ public class FormatDataUtil {
     }
 
 
-    /*public static void main(String[] args) throws UnsupportedEncodingException {
+
+    /*public static void main(String[] args) throws ReflectiveOperationException {
+
+        String str = "event_id=xxx<>create_time=1609727577000<>file_name=xxx<>file_path=base64<>content_text=base64<>key_word=base64";
+        Map<String,String> map = FormatDataUtil.getMapByData(str);
+
+        Map<String,String> map1 = new HashMap<>();
+
+       for (Map.Entry<String,String> entry :map.entrySet()){
+           map1.put(entry.getKey(),entry.getValue());
+       }
+
+       ReceiveData data = new ReceiveData();
+       data.setEvent_id(map1.get("event_id"));
+       data.setCreate_time(map1.get("create_time"));
+       data.setFile_name(map1.get("file_name"));
+       data.setFile_path(map1.get("file_path"));
+       data.setContent_text(map1.get("content_text"));
+       data.setKey_word(map1.get("key_word"));
+       map1.clear();
+       System.out.println(data);
 
 
 
-        Map <String,String> map = null;
-
-        map = FormatDataUtil.getMapByData("event_id=xxx<>file_path=base64(c:\\xxx;dsdf.txt)<>file_name=xxx<>key_word=base64(xxx;xxx;xxx)<>content_text=base64(xxxxxyyy)<>create_time=1609727577000");
-
-        for (Map.Entry<String,String> entry : map.entrySet()){
-
-            System.out.println(entry.getKey()+":"+entry.getValue()+"\n");
-
-        }
 
 
-        String str = "c:\\xxx;dsdf.txt";
-        String base64encodedString = Base64.getEncoder().encodeToString(str.getBytes("utf-8"));
-
-        String str1 = "event_id=xxx<>file_path="+base64encodedString+"<>";
-
-        String str2 = "event_id=xxx<>file_path=base64(c:\\xxx;dsdf.txt)<>file_name=xxx<>key_word=base64(xxx;xxx;xxx)<>content_text=base64(xxxxxyyy)<>create_time=1609727577000";
-
-        String[] temp = getArrayByChar(str2, arg8);
-        System.out.println(temp.length);
-        for (String s : temp) {
-            // 如果有多个参数用逗号分割
-            if (isContainsChars(s, arg2)) {
-                String[] temp1 = getArrayByChar(s, arg2);
-                for (String s1 : temp1) {
-                    System.out.println(s1);
-                }
-            } else {
-                System.out.println(s);
-            }
-        }
-
-
-
-//        FormatDataUtil.test();
 
 
     }*/
-
 
 
 
