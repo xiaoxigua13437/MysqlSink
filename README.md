@@ -24,27 +24,14 @@ For further reference, please consider the following sections:
 
    _目录结构_
 
-    |
-    |
-    |
-    |
-    |
-    |
-    |
-    |
-    |
-    |
-    |
-    |   
-    |
-    |
-    |
-    |
-    |
-    |
-    |
-
-
+   ├──entity              //实体
+   │  
+   │
+   ├──util                //工具类
+   │    ├──FormatDataUtil    
+   │    ├──MapObjectTrans //Map与Object转换
+   │    ├──TestSocketUtil //测试RPC发送请求
+   │
 
 
 
