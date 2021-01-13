@@ -3,7 +3,7 @@
 ### 此项目仅供本人学习
 For further reference, please consider the following sections:
 
-* [Flume 1.8用户手册中文版](https://flume.liyifeng.org/)
+* [Flume 1.9官方手册版](http://flume.apache.org/FlumeUserGuide.html)
 * [GitHub 代码地址](https://github.com/xiaoxigua13437/MysqlSink)
 
 
